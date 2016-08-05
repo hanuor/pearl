@@ -63,20 +63,12 @@ public class BasicNetwork implements Network {
     protected final HttpStack mHttpStack;
 
     protected final ByteArrayPool mPool;
-
-    /**
-     * @param httpStack HTTP stack to be used
-     */
     public BasicNetwork(HttpStack httpStack) {
         // If a pool isn't passed in, then build a small default pool that will give us a lot of
         // benefit and not use too much memory.
         this(httpStack, new ByteArrayPool(DEFAULT_POOL_SIZE));
     }
 
-    /**
-     * @param httpStack HTTP stack to be used
-     * @param pool a buffer pool that improves GC performance in copy operations
-     */
     public BasicNetwork(HttpStack httpStack, ByteArrayPool pool) {
         mHttpStack = httpStack;
         mPool = pool;
@@ -192,11 +184,7 @@ public class BasicNetwork implements Network {
         }
     }
 
-    /**
-     * Attempts to prepare the request for a retry. If there are no more attempts remaining in the
-     * request's retry policy, a timeout exception is thrown.
-     * @param request The request to use.
-     */
+
     private static void attemptRetryOnException(String logPrefix, Request<?> request,
             VolleyError exception) throws VolleyError {
         RetryPolicy retryPolicy = request.getRetryPolicy();
@@ -263,9 +251,7 @@ public class BasicNetwork implements Network {
         }
     }
 
-    /**
-     * Converts Headers[] to Map<String, String>.
-     */
+
     protected static Map<String, String> convertHeaders(Header[] headers) {
         Map<String, String> result = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
         for (int i = 0; i < headers.length; i++) {

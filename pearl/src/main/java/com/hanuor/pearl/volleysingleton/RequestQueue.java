@@ -30,13 +30,7 @@ import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * A request dispatch queue with a thread pool of dispatchers.
- *
- * Calling {@link #add(Request)} will enqueue the given Request for dispatch,
- * resolving from either cache or network on a worker thread, and then delivering
- * a parsed response on the main thread.
- */
+
 public class RequestQueue {
 
     /** Callback interface for completed requests. */
@@ -48,16 +42,6 @@ public class RequestQueue {
     /** Used for generating monotonically-increasing sequence numbers for requests. */
     private AtomicInteger mSequenceGenerator = new AtomicInteger();
 
-    /**
-     * Staging area for requests that already have a duplicate request in flight.
-     *
-     * <ul>
-     *     <li>containsKey(cacheKey) indicates that there is a request in flight for the given cache
-     *          key.</li>
-     *     <li>get(cacheKey) returns waiting requests for the given cache key. The in flight request
-     *          is <em>not</em> contained in that list. Is null if no requests are staged.</li>
-     * </ul>
-     */
     private final Map<String, Queue<Request<?>>> mWaitingRequests =
             new HashMap<String, Queue<Request<?>>>();
 
@@ -97,14 +81,6 @@ public class RequestQueue {
     private List<RequestFinishedListener> mFinishedListeners =
             new ArrayList<RequestFinishedListener>();
 
-    /**
-     * Creates the worker pool. Processing will not begin until {@link #start()} is called.
-     *
-     * @param cache A Cache to use for persisting responses to disk
-     * @param network A Network interface for performing HTTP requests
-     * @param threadPoolSize Number of network dispatcher threads to create
-     * @param delivery A ResponseDelivery interface for posting responses and errors
-     */
     public RequestQueue(Cache cache, Network network, int threadPoolSize,
             ResponseDelivery delivery) {
         mCache = cache;
@@ -112,25 +88,11 @@ public class RequestQueue {
         mDispatchers = new NetworkDispatcher[threadPoolSize];
         mDelivery = delivery;
     }
-
-    /**
-     * Creates the worker pool. Processing will not begin until {@link #start()} is called.
-     *
-     * @param cache A Cache to use for persisting responses to disk
-     * @param network A Network interface for performing HTTP requests
-     * @param threadPoolSize Number of network dispatcher threads to create
-     */
     public RequestQueue(Cache cache, Network network, int threadPoolSize) {
         this(cache, network, threadPoolSize,
                 new ExecutorDelivery(new Handler(Looper.getMainLooper())));
     }
 
-    /**
-     * Creates the worker pool. Processing will not begin until {@link #start()} is called.
-     *
-     * @param cache A Cache to use for persisting responses to disk
-     * @param network A Network interface for performing HTTP requests
-     */
     public RequestQueue(Cache cache, Network network) {
         this(cache, network, DEFAULT_NETWORK_THREAD_POOL_SIZE);
     }
@@ -174,25 +136,14 @@ public class RequestQueue {
         return mSequenceGenerator.incrementAndGet();
     }
 
-    /**
-     * Gets the {@link Cache} instance being used.
-     */
     public Cache getCache() {
         return mCache;
     }
 
-    /**
-     * A simple predicate or filter interface for Requests, for use by
-     * {@link RequestQueue#cancelAll(RequestFilter)}.
-     */
     public interface RequestFilter {
         public boolean apply(Request<?> request);
     }
 
-    /**
-     * Cancels all requests in this queue for which the given filter applies.
-     * @param filter The filtering function to use
-     */
     public void cancelAll(RequestFilter filter) {
         synchronized (mCurrentRequests) {
             for (Request<?> request : mCurrentRequests) {
@@ -219,11 +170,6 @@ public class RequestQueue {
         });
     }
 
-    /**
-     * Adds a Request to the dispatch queue.
-     * @param request The request to service
-     * @return The passed-in request
-     */
     public <T> Request<T> add(String tag,Request<T> request) {
         // Tag the request as belonging to this queue and add it to the set of current requests.
         request.setTag(tag);
@@ -265,15 +211,7 @@ public class RequestQueue {
             return request;
         }
     }
-
-    /**
-     * Called from {@link Request#finish(String)}, indicating that processing of the given request
-     * has finished.
-     *
-     * <p>Releases waiting requests for <code>request.getCacheKey()</code> if
-     *      <code>request.shouldCache()</code>.</p>
-     */
-    <T> void finish(Request<T> request) {
+ <T> void finish(Request<T> request) {
         // Remove from the set of requests currently being processed.
         synchronized (mCurrentRequests) {
             mCurrentRequests.remove(request);

@@ -23,25 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Logging helper class.
- * <p/>
- * to see Volley logs call:<br/>
- * {@code <android-sdk>/platform-tools/adb shell setprop log.tag.Volley VERBOSE}
- */
 public class VolleyLog {
     public static String TAG = "Volley";
 
     public static boolean DEBUG = Log.isLoggable(TAG, Log.VERBOSE);
 
-    /**
-     * Customize the log tag for your application, so that other apps
-     * using Volley don't mix their logs with yours.
-     * <br />
-     * Enable the log property for your tag before starting your app:
-     * <br />
-     * {@code adb shell setprop log.tag.&lt;tag&gt;}
-     */
     public static void setTag(String tag) {
         d("Changing log tag to %s", tag);
         TAG = tag;
@@ -135,11 +121,6 @@ public class VolleyLog {
             mMarkers.add(new Marker(name, threadId, SystemClock.elapsedRealtime()));
         }
 
-        /**
-         * Closes the log, dumping it to logcat if the time difference between
-         * the first and last markers is greater than {@link #MIN_DURATION_FOR_LOGGING_MS}.
-         * @param header Header string to print above the marker log.
-         */
         public synchronized void finish(String header) {
             mFinished = true;
 

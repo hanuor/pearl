@@ -31,11 +31,6 @@ public class VolleyHelper {
         }
     }
 
-    /**
-     * Returns instance of ImageLoader initialized with {@see FakeImageCache} which effectively means
-     * that no memory caching is used. This is useful for images that you know that will be show
-     * only once.
-     */
     public static ImageLoader getImageLoader() {
         if (mImageLoader != null) {
             return mImageLoader;
