@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hanuor.pearl.Pearl;
+import com.hanuor.pearl.PearlJSON;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView img, back;
     ArrayList<String> arr;
     Button btn;
-    String urlString = "http://api.androidhive.info/json/movies.json";
+    //a sample url. We couldn't find one so
+    String urlString = "http://pastebin.com/raw/wgkJgazE";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         arr = new ArrayList<String>();
 
         //Initialized with key "mind"
-        Pearl.initialize(MainActivity.this,"mind");
+        Pearl.initialize(MainActivity.this,"pearl");
+
 
         JsonArrayRequest req = new JsonArrayRequest(urlString,
                 new Response.Listener<JSONArray>() {
@@ -51,11 +54,18 @@ public class MainActivity extends AppCompatActivity {
                             //jsonResponse = "";
                             for (int i = 0; i < response.length(); i++) {
 
-                                JSONObject obj = response.getJSONObject(i);
-                                String pathImage = obj.getString("image");
+                                JSONObject person = (JSONObject) response
+                                        .get(i);
+                                String serializable = PearlJSON.convertToSerializableObject(person);
+                                Pearl.saveJsonObject(MainActivity.this, serializable,""+i+"tag");
 
+                                String name = person.getString("id");
+                                String email = person.getString("height");
+                                Log.d("MAINE"," "+name+" email " + email);
+                                JSONObject mass = person.getJSONObject("user");
+                                JSONObject spehe = mass.getJSONObject("profile_image");
 
-                                arr.add(pathImage);
+                                arr.add(spehe.getString("large"));
 
                             }
 
@@ -79,49 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Adding request to request queue
         Volley.newRequestQueue(MainActivity.this).add(req);
-
-
-
-
-       /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                urlString, null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("LOGG", response.toString());
-
-                try {
-                    // Parsing json object response
-                    // response will be a json object
-                    JSONArray jsonArray = response.getJSONArray("actors");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject object = jsonArray.getJSONObject(i);
-                        String imagePath = object.getString("image");
-                        arr.add(imagePath);
-
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),
-                            "Error: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        // Adding request to request queue
-        Volley.newRequestQueue(MainActivity.this).add(jsonObjReq);
-*/
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

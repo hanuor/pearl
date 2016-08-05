@@ -80,7 +80,7 @@ public class Pearl{
     public static void imageLoader(Context context, String URL, ImageView target) {
         ctx = context;
         Log.e("LRU","loader");
-        if(temporaryDB.getKeygen().equalsIgnoreCase("mind")){
+        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")){
 
             imageLoader.get(URL,ImageLoader.getImageListener(target, com.hanuor.pearl.R.drawable.more, com.hanuor.pearl.R.drawable.more));
 
