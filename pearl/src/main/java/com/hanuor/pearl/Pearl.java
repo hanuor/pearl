@@ -38,42 +38,52 @@ public class Pearl{
         }
     }
     public static void saveJsonObject(Context context, String jsonObject,String tag) {
-        FileOutputStream fos = null;
-        try {
-            fos = context.openFileOutput(tag, Context.MODE_PRIVATE);
+        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
 
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(jsonObject);
-        oos.flush();
-        oos.close();
+            FileOutputStream fos = null;
+            try {
+                fos = context.openFileOutput(tag, Context.MODE_PRIVATE);
 
-        fos.close();
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(jsonObject);
+                oos.flush();
+                oos.close();
 
-            Log.d("CheckJson","yes");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+                fos.close();
 
-            Log.d("CheckJson","no");
-        } catch (IOException e) {
-            e.printStackTrace();
+                Log.d("CheckJson", "yes");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
 
-            Log.d("CheckJson","no");
+                Log.d("CheckJson", "no");
+            } catch (IOException e) {
+                e.printStackTrace();
+
+                Log.d("CheckJson", "no");
+            }
+        }else{
+            Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
         }
-
     }
     public static Object retrieveJsonObject(String tag){
+        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
 
-        try {
-            FileInputStream fis = ctx.openFileInput(tag);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            Object object = ois.readObject();
-            fis.close();
-            return object;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+
+            try {
+                FileInputStream fis = ctx.openFileInput(tag);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                Object object = ois.readObject();
+                fis.close();
+                return object;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }else{
+            Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
             return null;
         }
     }
@@ -90,8 +100,11 @@ public class Pearl{
         }
      }
     public static void cancelImageLoad(String urlofImage){
-        imageLoader.cancelRequestfromQueue(urlofImage);
-
+        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
+            imageLoader.cancelRequestfromQueue(urlofImage);
+        }else{
+            Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
+        }
     }
 
 
