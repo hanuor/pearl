@@ -18,7 +18,9 @@ android {
         }
     }
 }
-
+repositories {
+    mavenCentral() // jcenter() works as well because it pulls from Maven Central
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -26,5 +28,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.mcxiaoke.volley:library-aar:1.0.+'
 
-    compile 'com.github.hanuor:pearl:0.0.2'
-}
+compile project(':pearl')}

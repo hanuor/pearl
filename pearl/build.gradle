@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/hanuor/pearl'
     gitUrl = 'https://github.com/hanuor/pearl.git'
 
-    libraryVersion = '0.0.2'
+    libraryVersion = '0.0.4'
 
     developerId = 'hanuor'
     developerName = 'Shantanu Johri'
@@ -29,7 +29,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 8
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"

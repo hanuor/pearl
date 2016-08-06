@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class DisplayActivity extends AppCompatActivity {
 
     GridView grid;
+    int img[] = {R.drawable.q,R.drawable.e,R.drawable.r,R.drawable.w,R.drawable.t,R.drawable.y,R.drawable.u,R.drawable.i,R.drawable.o,R.drawable.f};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
         arr = new ArrayList<String>();
 
         //Initialized with key "mind"
-        Pearl.initialize(MainActivity.this,"pearl");
-
-
         JsonArrayRequest req = new JsonArrayRequest(urlString,
                 new Response.Listener<JSONArray>() {
                     @Override

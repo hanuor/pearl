@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import com.hanuor.pearl.handler.VolleyHelper;
 import com.hanuor.pearl.toolbox.ImageLoader;
 import com.hanuor.pearl.verifiers.TemporaryDB;
-import com.hanuor.pearl.verifiers.Utils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,7 +23,7 @@ public class Pearl{
     private static   TemporaryDB temporaryDB = new TemporaryDB();
 
     private static ImageLoader imageLoader;
-    public static void initialize(Context context, String key){
+    /*public static void initialize(Context context, String key){
         ctx = context;
         VolleyHelper.init(context);
          imageLoader = VolleyHelper.getImageLoader();
@@ -36,9 +35,9 @@ public class Pearl{
         else{
             temporaryDB.setKeygen(key);
         }
-    }
+    }*/
     public static void saveJsonObject(Context context, String jsonObject,String tag) {
-        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
+       // if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
 
             FileOutputStream fos = null;
             try {
@@ -61,12 +60,12 @@ public class Pearl{
 
                 Log.d("CheckJson", "no");
             }
-        }else{
+       /* }else{
             Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
-        }
+        }*/
     }
     public static Object retrieveJsonObject(String tag){
-        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
+//        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
 
 
             try {
@@ -82,30 +81,33 @@ public class Pearl{
                 e.printStackTrace();
                 return null;
             }
-        }else{
+        /*}else{
             Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
             return null;
-        }
+        }*/
     }
     public static void imageLoader(Context context, String URL, ImageView target) {
         ctx = context;
         Log.e("LRU","loader");
-        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")){
+
+        VolleyHelper.init(context);
+        imageLoader = VolleyHelper.getImageLoader();
+       // if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")){
 
             imageLoader.get(URL,ImageLoader.getImageListener(target, com.hanuor.pearl.R.drawable.more, com.hanuor.pearl.R.drawable.more));
 
 
-        }else{
+        /*}else{
             Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
-        }
+        }*/
      }
     public static void cancelImageLoad(String urlofImage){
-        if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
+        //if(temporaryDB.getKeygen().equalsIgnoreCase("pearl")) {
             imageLoader.cancelRequestfromQueue(urlofImage);
-        }else{
+        /*}else{
             Utils.throwExceptionIfKeyDNM(temporaryDB.getKeygen().toString(), "libraykey");
         }
-    }
+  */  }
 
 
 }
