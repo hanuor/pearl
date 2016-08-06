@@ -10,17 +10,17 @@ Pearl uses concepts of Google's volley project and some of it's own image optimi
     mavenCentral() // jcenter() works as well because it pulls from Maven Central
     }
     dependencies {
-    compile 'com.github.hanuor:pearl:0.0.4'    
+    compile 'com.github.hanuor:pearl:0.0.5'    
     }
 **or** simply under dependencies section:   
   
-    compile 'com.github.hanuor:pearl:0.0.4'    
+    compile 'com.github.hanuor:pearl:0.0.5'    
 
 ### or Using Maven:
     <dependency>
     <groupId>com.github.hanuor</groupId>
     <artifactId>pearl</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <type>pom</type>
     </dependency>
 
@@ -30,7 +30,7 @@ Pearl uses concepts of Google's volley project and some of it's own image optimi
 ###Loading an Image
 For now a premium fade in animation has been integrated into the library. Images will be displayed through fade in animation.
 
-     Pearl.imageLoader(mContext,URLofImage,imageView);  
+     Pearl.imageLoader(Context mContext,String URLofImage,ImageView imageView,int defaultImage);  
 
 **where**   
 mcontext = Context of the activity/fragment   
@@ -82,7 +82,7 @@ Shantanu Johri (Android)
 ---------
 
 ###License
-Copyright 2016 Hanuor Inc.
+Copyright 2016 Hanuor, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
