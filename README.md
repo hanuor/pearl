@@ -11,17 +11,17 @@ Pearl uses concepts of Google's volley project and some of it's own image optimi
     mavenCentral() // jcenter() works as well because it pulls from Maven Central
     }
     dependencies {
-    compile 'com.github.hanuor:pearl:0.0.5'    
+    compile 'com.github.hanuor:pearl:0.0.6'    
     }
 **or** simply under dependencies section:   
   
-    compile 'com.github.hanuor:pearl:0.0.5'    
+    compile 'com.github.hanuor:pearl:0.0.6'    
 
 ### or Using Maven:
     <dependency>
     <groupId>com.github.hanuor</groupId>
     <artifactId>pearl</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <type>pom</type>
     </dependency>
 

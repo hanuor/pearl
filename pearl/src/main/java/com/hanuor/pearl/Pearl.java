@@ -1,6 +1,8 @@
 package com.hanuor.pearl;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.hanuor.pearl.handler.VolleyHelper;
@@ -60,8 +62,19 @@ public class Pearl{
         defaultImg = defaultImage;
         VolleyHelper.init(context);
         imageLoader = VolleyHelper.getImageLoader();
-            if(defaultImg != 0){
-                  imageLoader.get(URL,ImageLoader.getImageListener(target, defaultImage, defaultImage));
+        Resources r = context.getResources();
+        Boolean fileFound = true;
+        Drawable d = null;
+        try{
+            d = r.getDrawable(defaultImage);
+        }
+        catch(Exception e){
+            fileFound = false;
+        }
+        if(fileFound){
+            imageLoader.get(URL,ImageLoader.getImageListener(target, defaultImage, defaultImage));
+        }else{
+                imageLoader.get(URL,ImageLoader.getImageListener(target, R.drawable.more,R.drawable.more));
             }
      }
     public static void cancelImageLoad(String urlofImage){

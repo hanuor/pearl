@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/hanuor/pearl'
     gitUrl = 'https://github.com/hanuor/pearl.git'
 
-    libraryVersion = '0.0.5'
+    libraryVersion = '0.0.6'
 
     developerId = 'hanuor'
     developerName = 'Shantanu Johri'

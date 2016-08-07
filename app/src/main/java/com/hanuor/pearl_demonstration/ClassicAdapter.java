@@ -54,7 +54,7 @@ public class ClassicAdapter extends BaseAdapter{
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.single, null);
             ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
-            Pearl.imageLoader(mContext,Imageid.get(position),imageView);
+            Pearl.imageLoader(mContext,Imageid.get(position),imageView,R.drawable.frost);
         } else {
             grid = (View) convertView;
         }
