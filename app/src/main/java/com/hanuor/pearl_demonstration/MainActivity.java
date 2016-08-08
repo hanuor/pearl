@@ -14,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hanuor.pearl.Pearl;
-import com.hanuor.pearl.PearlJSON;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 JSONObject person = (JSONObject) response
                                         .get(i);
-                                String serializable = PearlJSON.convertToSerializableObject(person);
-                                Pearl.saveJsonObject(MainActivity.this, serializable,""+i+"tag");
+                                Pearl.saveJsonObject(MainActivity.this, "serializable",""+i+"tag");
 
                                 String name = person.getString("id");
                                 String email = person.getString("height");

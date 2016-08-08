@@ -11,17 +11,17 @@ Pearl uses concepts of Google's volley project and some of it's own image optimi
     mavenCentral() // jcenter() works as well because it pulls from Maven Central
     }
     dependencies {
-    compile 'com.github.hanuor:pearl:0.0.6'    
+    compile 'com.github.hanuor:pearl:0.0.7'    
     }
 **or** simply under dependencies section:   
   
-    compile 'com.github.hanuor:pearl:0.0.6'    
+    compile 'com.github.hanuor:pearl:0.0.7'    
 
 ### or Using Maven:
     <dependency>
     <groupId>com.github.hanuor</groupId>
     <artifactId>pearl</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <type>pom</type>
     </dependency>
 
@@ -42,10 +42,7 @@ imageView = Target ImageView
 
     Pearl.saveJsonObject(Context context, String jsonObject,String tag);     
 
-**having a problem to convert Json object into a string? Don't worry we've got you covered.**   
-Use class PearlJSON:   
-
-    String jsonstring = PearlJSON.convertToSerializableObject(jsonobject);  
+**You have to convert Json object into a String first.**   
 
 ###Retrieving a Json String   
 
@@ -66,8 +63,7 @@ Use class PearlJSON:
 
 Google's volley for android   
 Apache httpcore.jar   
-Apache httpclient.jar   
-Google's gson library     
+Apache httpclient.jar     
 Rohan Dikshit (Website)     
 Shantanu Johri (Android)     
 

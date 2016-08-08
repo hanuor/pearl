@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/hanuor/pearl'
     gitUrl = 'https://github.com/hanuor/pearl.git'
 
-    libraryVersion = '0.0.6'
+    libraryVersion = '0.0.7'
 
     developerId = 'hanuor'
     developerName = 'Shantanu Johri'
@@ -47,7 +47,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile files('libs/apache-httpcomponents-httpcore.jar')
-    compile files('libs/gson-1.7.jar')
     compile files('libs/apache-httpcomponents-httpclient.jar')
 }
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
