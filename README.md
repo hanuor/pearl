@@ -56,7 +56,7 @@ imageView = Target ImageView
 ------
 ###Compatibility
 
-**Minimum Android SDK**: Pearl requires a minimum API level of **8**.    
+**Minimum Android SDK**: Pearl requires a minimum API level of **10**.    
 
 ---------
 ###Special thanks to:
