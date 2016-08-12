@@ -6,14 +6,7 @@ Pearl uses concepts of Google's volley project and some of it's own image optimi
 ![](https://s32.postimg.org/wjw8qon51/pearl.png)
 ------    
 #Download    
-###Using Gradle:
-    repositories {
-    mavenCentral() // jcenter() works as well because it pulls from Maven Central
-    }
-    dependencies {
-    compile 'com.github.hanuor:pearl:0.0.8'    
-    }
-**or** simply under dependencies section:   
+###Using Gradle: under dependencies section:   
   
     compile 'com.github.hanuor:pearl:0.0.8'    
 
