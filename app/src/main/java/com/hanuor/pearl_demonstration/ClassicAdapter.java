@@ -63,7 +63,7 @@ public class ClassicAdapter extends BaseAdapter{
             thumb.setTag(position);
             Log.d("fferhh",thumb.getTag()+"");
             Log.d("fffffff",""+position);
-            
+
             if(position == (getCount()-1)){
                 Log.d("Weate","We are here");
             }
