@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.hanuor.pearl.Pearl;
-import com.hanuor.sapphire.Sapphire;
 
 import java.util.ArrayList;
 
@@ -19,12 +18,11 @@ import java.util.ArrayList;
 public class ClassicAdapter extends BaseAdapter{
     private Context mContext;
     private final ArrayList<String> Imageid;
-    ArrayList<String> tagss;
+
 
     public ClassicAdapter(Context c,ArrayList<String> Imageid ) {
         mContext = c;
         this.Imageid = Imageid;
-        Sapphire.initialize(mContext,"asas","bbb");
 
     }
 
@@ -54,7 +52,7 @@ public class ClassicAdapter extends BaseAdapter{
         View grid;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        tagss = new ArrayList<String>();
+
         if (convertView == null) {
 
             grid = new View(mContext);
@@ -65,11 +63,9 @@ public class ClassicAdapter extends BaseAdapter{
             thumb.setTag(position);
             Log.d("fferhh",thumb.getTag()+"");
             Log.d("fffffff",""+position);
-            tagss.add(position+"");
+            
             if(position == (getCount()-1)){
                 Log.d("Weate","We are here");
-
-                Sapphire.with(mContext).addTags(tagss);
             }
             Pearl.imageLoader(mContext,Imageid.get(position),thumb,R.drawable.more);
 
