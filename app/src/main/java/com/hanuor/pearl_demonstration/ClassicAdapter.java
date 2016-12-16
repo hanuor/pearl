@@ -24,6 +24,7 @@ public class ClassicAdapter extends BaseAdapter{
     public ClassicAdapter(Context c,ArrayList<String> Imageid ) {
         mContext = c;
         this.Imageid = Imageid;
+        tagss = new ArrayList<String>();
         Sapphire.initialize(mContext,"asas","bbb");
 
     }
@@ -54,7 +55,7 @@ public class ClassicAdapter extends BaseAdapter{
         View grid;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        tagss = new ArrayList<String>();
+
         if (convertView == null) {
 
             grid = new View(mContext);
@@ -66,7 +67,8 @@ public class ClassicAdapter extends BaseAdapter{
             Log.d("fferhh",thumb.getTag()+"");
             Log.d("fffffff",""+position);
             tagss.add(position+"");
-            if(position == (getCount()-1)){
+
+            if(position == (getCount()-3)){
                 Log.d("Weate","We are here");
 
                 Sapphire.with(mContext).addTags(tagss);
