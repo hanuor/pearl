@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="suggestionbox">
+        <attr name="headerText" format="string"/>
+        <attr name="headertextColor" format="string"/>
+        <attr name="headerTextFontSize" format="float"/>
+        <attr name="backgroundColor" format="string"/>
+        <attr name="footerText" format="string"/>
+        <attr name="footertextColor" format="string"/>
+        <attr name="footertextSize" format="float"/>
+    </declare-styleable>
+</resources>

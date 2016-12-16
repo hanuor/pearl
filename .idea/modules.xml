@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Pearl_Demonstration.iml" filepath="$PROJECT_DIR$/Pearl_Demonstration.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pearl/pearl.iml" filepath="$PROJECT_DIR$/pearl/pearl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pearl.iml" filepath="$PROJECT_DIR$/pearl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pearl/pearl-pearl.iml" filepath="$PROJECT_DIR$/pearl/pearl-pearl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sapphire/sapphire.iml" filepath="$PROJECT_DIR$/sapphire/sapphire.iml" />
     </modules>
   </component>
 </project>

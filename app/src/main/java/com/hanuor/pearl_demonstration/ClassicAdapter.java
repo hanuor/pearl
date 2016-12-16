@@ -1,6 +1,7 @@
 package com.hanuor.pearl_demonstration;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.hanuor.pearl.Pearl;
+import com.hanuor.sapphire.Sapphire;
 
 import java.util.ArrayList;
 
@@ -17,16 +19,19 @@ import java.util.ArrayList;
 public class ClassicAdapter extends BaseAdapter{
     private Context mContext;
     private final ArrayList<String> Imageid;
+    ArrayList<String> tagss;
 
     public ClassicAdapter(Context c,ArrayList<String> Imageid ) {
         mContext = c;
         this.Imageid = Imageid;
+        Sapphire.initialize(mContext,"asas","bbb");
 
     }
 
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
+        Log.d("Paral", ""+ Imageid.size());
         return Imageid.size();
     }
 
@@ -42,19 +47,32 @@ public class ClassicAdapter extends BaseAdapter{
         return 0;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         View grid;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        tagss = new ArrayList<String>();
         if (convertView == null) {
 
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.single, null);
-            ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
-            Pearl.imageLoader(mContext,Imageid.get(position),imageView,R.drawable.frost);
+            ImageView thumb= (ImageView)grid.findViewById(R.id.grid_image);
+
+            Log.d("ferrrari","HEY");
+            thumb.setTag(position);
+            Log.d("fferhh",thumb.getTag()+"");
+            Log.d("fffffff",""+position);
+            tagss.add(position+"");
+            if(position == (getCount()-1)){
+                Log.d("Weate","We are here");
+
+                Sapphire.with(mContext).addTags(tagss);
+            }
+            Pearl.imageLoader(mContext,Imageid.get(position),thumb,R.drawable.more);
+
         } else {
             grid = (View) convertView;
         }

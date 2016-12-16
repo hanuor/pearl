@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arr;
     Button btn;
     //a sample url. We couldn't find one so
-    String urlString = "http://pastebin.com/raw/wgkJgazE";
+        String urlString = "http://pastebin.com/raw/wgkJgazE";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
