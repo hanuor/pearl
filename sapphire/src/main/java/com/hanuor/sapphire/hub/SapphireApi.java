@@ -137,7 +137,7 @@ public class SapphireApi {
             Log.d("Sticky bus event"," " + stickyEvent.getKEYID() + " "+stickyEvent.getKEYSECRET()+" "+stickyEvent.getVALIDATOR());
             ArrayList<String> tags = new ArrayList<String>();
             for(int i = 0; i < Views.size(); i++){
-                tags.add((String)Views.get(i).getTag());
+                tags.add(String.valueOf(Views.get(i).getTag()));
             }
             connect.tagslist = tags;
             connect.imageViews = Views;

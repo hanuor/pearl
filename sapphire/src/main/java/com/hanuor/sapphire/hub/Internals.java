@@ -203,7 +203,7 @@ public class Internals {
         for(int i = 0; i<imgviews.size(); i++){
             //add Tag check here, not adding for now as this is just for testing
             String tag = null;
-            tag = (String) imgviews.get(i).getTag();
+            tag = String.valueOf(imgviews.get(i).getTag());
 
             sapphireImgDbHelper.insertImage(tag, imagesUtil.drawableToByteArray(imgviews.get(i).getDrawable()));
             Log.d("SapphireBelly",""+sapphireImgDbHelper.getCount());

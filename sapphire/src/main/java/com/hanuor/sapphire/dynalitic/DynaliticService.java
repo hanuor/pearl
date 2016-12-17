@@ -152,7 +152,8 @@ public class DynaliticService extends Service implements SensorEventListener {
                 public void run() {
                     Log.d("Summit","Runnit");
                     //uploadDocs.uploadImagetoOnlineDb(getDateandTime());
-                   // uploadDocs.uploadTimeStamps(startTimeStoreDB.retrievestartStamp(),startTimeStoreDB.retrieveendStamp());
+                   //
+                    //  uploadDocs.uploadTimeStamps(startTimeStoreDB.retrievestartStamp(),startTimeStoreDB.retrieveendStamp());
                     if(getTime().equals("[13:26:11]")){
 
                         //Do upload

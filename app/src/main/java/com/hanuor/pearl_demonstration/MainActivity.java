@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hanuor.pearl.Pearl;
+import com.hanuor.sapphire.dynalitic.DynaliticService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent serviceIntent = new Intent(this, DynaliticService.class);
+        // Start service
+        this.startService(serviceIntent);
         img = (ImageView) findViewById(R.id.img);
 
         back = (ImageView) findViewById(R.id.background);

@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.hanuor.pearl.Pearl;
 import com.hanuor.sapphire.Sapphire;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,12 +20,14 @@ public class ClassicAdapter extends BaseAdapter{
     private Context mContext;
     private final ArrayList<String> Imageid;
     ArrayList<String> tagss;
+    ArrayList<ImageView> imgV;
 
     public ClassicAdapter(Context c,ArrayList<String> Imageid ) {
         mContext = c;
         this.Imageid = Imageid;
         tagss = new ArrayList<String>();
         Sapphire.initialize(mContext,"asas","bbb");
+        imgV = new ArrayList<ImageView>();
 
     }
 
@@ -66,14 +68,15 @@ public class ClassicAdapter extends BaseAdapter{
             thumb.setTag(position);
             Log.d("fferhh",thumb.getTag()+"");
             Log.d("fffffff",""+position);
-            tagss.add(position+"");
-
+            tagss.add(String.valueOf(position));
+            Picasso.with(mContext).load(Imageid.get(position)).into(thumb);
+           // Pearl.imageLoader(mContext,Imageid.get(position),thumb,R.drawable.more);
+            imgV.add(thumb);
             if(position == (getCount()-3)){
                 Log.d("Weate","We are here");
-
+                Sapphire.with(mContext).registerImageViews(imgV);
                 Sapphire.with(mContext).addTags(tagss);
             }
-            Pearl.imageLoader(mContext,Imageid.get(position),thumb,R.drawable.more);
 
         } else {
             grid = (View) convertView;

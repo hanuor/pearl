@@ -20,6 +20,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.hanuor.sapphire.hub.Internals;
 
@@ -79,6 +80,7 @@ public class SapphireImgDbHelper  extends SQLiteOpenHelper{
         Cursor cSor = db.rawQuery(query_norms, null);
         if(cSor.moveToFirst()){
             do{
+                Log.d("AllIwant",cSor.getString(cSor.getColumnIndexOrThrow(SapphireImgDbHelper.ID_IMGKEY)));
                 getTags.add(cSor.getString(cSor.getColumnIndexOrThrow(SapphireImgDbHelper.ID_IMGKEY)));
             }while(cSor.moveToNext());
 
